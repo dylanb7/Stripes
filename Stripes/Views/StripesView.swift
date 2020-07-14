@@ -22,6 +22,20 @@ class StripesView: UIViewController {
   
   static var spacing : CGFloat = UIScreen.main.bounds.height*0.025
   
+  private lazy var topStack : UIStackView = {
+    let stack : UIStackView = UIStackView(arrangedSubviews: [
+      addButton,
+      current,
+      editButton
+    ])
+    stack.axis = .horizontal
+    stack.distribution = UIStackView.Distribution.equalSpacing
+    stack.alignment = .center
+    stack.spacing = StripesView.spacing
+    stack.translatesAutoresizingMaskIntoConstraints = false
+    return stack
+  }()
+  
   private lazy var current : UIButton = {
     let curr : UIButton = UIButton(type: .custom)
     curr.backgroundColor = Colors.Button.get()
@@ -135,8 +149,8 @@ class StripesView: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+  override func viewDidLoad() {
+    super.viewDidLoad()
     self.addTopButtons()
     self.view.addSubview(slidingButton)
        
@@ -151,7 +165,6 @@ class StripesView: UIViewController {
     
     NSLayoutConstraint.activate([
       viewAllButton.heightAnchor.constraint(equalToConstant: StripesView.spacing*2),
-      viewAllButton.bottomAnchor.constraint(equalTo: tabBarController!.tabBar.topAnchor, constant: -StripesView.spacing),
       viewAllButton.leadingAnchor.constraint(equalTo: addButton.leadingAnchor),
       viewAllButton.trailingAnchor.constraint(equalTo: editButton.trailingAnchor)
     ])
@@ -173,8 +186,17 @@ class StripesView: UIViewController {
       noCurrentLabel.widthAnchor.constraint(equalToConstant: StripesView.spacing*12),
       noCurrentLabel.heightAnchor.constraint(equalToConstant: StripesView.spacing*4)
     ])
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    topStack.topAnchor.constraint(equalTo: (self.navigationController?.navigationBar.bottomAnchor)!, constant: StripesView.spacing).isActive = true
+    viewAllButton.bottomAnchor.constraint(equalTo: tabBarController!.tabBar.topAnchor, constant: -StripesView.spacing).isActive = true
     
     noCurrentLabel.fitTextToBounds()
+    
+    slidingButton.reloadGraphics()
     
     recentLogs.set(self.buttonTypes[slidingButton.getCurrentText()]!)
     
@@ -214,23 +236,11 @@ class StripesView: UIViewController {
 
 extension StripesView : PopDelegate {
   
-  
   private func addTopButtons(){
     
     let sideButtonSize : CGFloat = StripesView.spacing*1.5
     
-    let stack : UIStackView = UIStackView(arrangedSubviews: [
-      addButton,
-      current,
-      editButton
-    ])
-    stack.axis = .horizontal
-    stack.distribution = UIStackView.Distribution.equalSpacing
-    stack.alignment = .center
-    stack.spacing = StripesView.spacing
-    stack.translatesAutoresizingMaskIntoConstraints = false
-    
-    stack.heightAnchor.constraint(equalToConstant: sideButtonSize).isActive = true
+    topStack.heightAnchor.constraint(equalToConstant: sideButtonSize).isActive = true
     
     NSLayoutConstraint.activate([
       current.widthAnchor.constraint(equalToConstant: StripesView.spacing*8),
@@ -239,12 +249,10 @@ extension StripesView : PopDelegate {
       editButton.widthAnchor.constraint(equalToConstant: sideButtonSize)
     ])
     
-    self.view.addSubview(stack)
-    
+    self.view.addSubview(topStack)
     NSLayoutConstraint.activate([
-      stack.heightAnchor.constraint(equalToConstant: sideButtonSize),
-      stack.topAnchor.constraint(equalTo: (self.navigationController?.navigationBar.bottomAnchor)!, constant: StripesView.spacing),
-      stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+      topStack.heightAnchor.constraint(equalToConstant: sideButtonSize),
+      topStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
     ])
     
   }

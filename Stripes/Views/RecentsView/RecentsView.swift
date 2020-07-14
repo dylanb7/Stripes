@@ -45,7 +45,6 @@ class RecentsView : UIView {
     scroll.backgroundColor = Colors.Background.get()*/
     scroll.showsVerticalScrollIndicator = false
     scroll.translatesAutoresizingMaskIntoConstraints = false
-    scroll.bounces = false
     return scroll
   }()
   
@@ -176,6 +175,7 @@ class recentsPreview: UIView {
     scroll.translatesAutoresizingMaskIntoConstraints = false
     scroll.showsVerticalScrollIndicator = false
     scroll.showsHorizontalScrollIndicator = false
+    scroll.bounces = false
     return scroll
   }()
   
@@ -278,7 +278,7 @@ class symptomPreview : recentsPreview {
     
     for res in symptom.responses {
       let label : UILabel = UILabel()
-      label.text = res.question.question
+      label.text = res.question.text
       label.numberOfLines = 0
       label.textColor = .white
       verticalStack.addArrangedSubview(label)
@@ -374,9 +374,7 @@ class BMIPreview: recentsPreview {
     
     weightLabel.text = "Weight: \(bmiData.weight) pounds"
     heightLabel.text = "Feet: \(bmiData.feet), Inches: \(bmiData.inches)"
-    let height = (bmiData.feet*12)+bmiData.inches
-    let check = height == 0 ? 1 : height
-    bmiLabel.text = "BMI: \((703*bmiData.weight)/(check*check))"
+    bmiLabel.text = "BMI: \(bmiData.bmi)"
     
     verticalStack.addArrangedSubview(weightLabel)
     verticalStack.addArrangedSubview(UIView.getSeparator(width: false, withColor: UIColor.black))

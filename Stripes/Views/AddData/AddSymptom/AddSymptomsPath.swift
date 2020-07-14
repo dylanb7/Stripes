@@ -98,16 +98,16 @@ class AddSymptomsPath : TableDataView {
   private func questionsToData(_ question: [Question])->[tableData] {
     questionData.removeAll()
     for q in question {
-      questionData[q.question] = q
+      questionData[q.text] = q
     }
     var tdata = question.map({ q in
-      return tableData(mainText: q.question, image: nil, selectable: true, hasScale: q.hasSeverity)
+      return tableData(mainText: q.text, image: nil, selectable: true, hasScale: q.hasSeverity)
     })
     return tdata.addContinueElement()
   }
   
   private func getBMResponse(_ data : tableData)->Response {
-    let question = Question(id: "5", question: "Average type of bm according to bristol stool chart", type: symptomType.BM.rawValue, hasSeverity: true, hasLocation: false)
+    let question = Question(id: "5", text: "Average type of bm according to bristol stool chart", type: symptomType.BM.rawValue, hasSeverity: true, hasLocation: false)
     return Response(question: question, severity: CGFloat(Int(data.mainText)!), location: nil)
   }
   

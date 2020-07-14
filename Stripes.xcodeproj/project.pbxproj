@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8841A9EC24B25D3D008A65E4 /* QuestionGathering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841A9EB24B25D3D008A65E4 /* QuestionGathering.swift */; };
+		8841A9EE24B2882B008A65E4 /* GraphRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8841A9ED24B2882B008A65E4 /* GraphRow.swift */; };
 		88549DE324B1039800B20349 /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88549DE224B1039800B20349 /* ChartXAxisFormatter.swift */; };
 		88772F432410835F00A4FDC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88772F422410835F00A4FDC3 /* AppDelegate.swift */; };
 		88772F472410835F00A4FDC3 /* StripesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88772F462410835F00A4FDC3 /* StripesView.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8841A9EB24B25D3D008A65E4 /* QuestionGathering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGathering.swift; sourceTree = "<group>"; };
+		8841A9ED24B2882B008A65E4 /* GraphRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRow.swift; sourceTree = "<group>"; };
 		88549DE224B1039800B20349 /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		88772F3F2410835F00A4FDC3 /* Stripes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stripes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88772F422410835F00A4FDC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			children = (
 				88772F9E2422CCAE00A4FDC3 /* GraphView.swift */,
 				88549DE224B1039800B20349 /* ChartXAxisFormatter.swift */,
+				8841A9ED24B2882B008A65E4 /* GraphRow.swift */,
 			);
 			path = Graphing;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				88772F732410839800A4FDC3 /* Store.swift */,
 				88772F8F24186D1B00A4FDC3 /* QuestionObserver.swift */,
 				88772F8224172BBC00A4FDC3 /* QuestionPath.swift */,
+				8841A9EB24B25D3D008A65E4 /* QuestionGathering.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 				88549DE324B1039800B20349 /* ChartXAxisFormatter.swift in Sources */,
 				88798EA6245FAFFB0011B446 /* MessagePopUp.swift in Sources */,
 				88772F9D24211D5700A4FDC3 /* TabBarController.swift in Sources */,
+				8841A9EC24B25D3D008A65E4 /* QuestionGathering.swift in Sources */,
 				88772F8324172BBC00A4FDC3 /* QuestionPath.swift in Sources */,
 				88798EBF246C6C500011B446 /* ImagePickerManager.swift in Sources */,
 				88798EBD246B437B0011B446 /* SubmitView.swift in Sources */,
@@ -487,6 +494,7 @@
 				88B28970247752AB0080C64A /* ViewAllTable.swift in Sources */,
 				88772F99241C596F00A4FDC3 /* ButtonPopUp.swift in Sources */,
 				88798EC1246C9C120011B446 /* RecentsView.swift in Sources */,
+				8841A9EE24B2882B008A65E4 /* GraphRow.swift in Sources */,
 				88B2896D247726B40080C64A /* AddTestPath.swift in Sources */,
 				88798EB6246726510011B446 /* BaseDataView.swift in Sources */,
 				88798EAE2462579F0011B446 /* SlidingButton.swift in Sources */,

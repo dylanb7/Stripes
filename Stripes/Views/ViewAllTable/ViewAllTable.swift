@@ -285,7 +285,7 @@ private class symptomContentView : customContentView {
       question.textAlignment = .center
       question.textColor = UIColor.black
       question.contentMode = .right
-      question.text = res.question.question
+      question.text = res.question.text
       self.scrollStack.addArrangedSubview(question)
       if let sev = res.severity {
         let severity : UILabel = UILabel()
@@ -348,6 +348,7 @@ private class allRow : UITableViewCell {
   private var current : customContentView?
   
   func set(_ content : customContentView) {
+    self.backgroundColor = UIColor.white
     self.contentView.addSubview(content)
     NSLayoutConstraint.activate([
       content.topAnchor.constraint(equalTo: self.contentView.topAnchor),

@@ -48,7 +48,8 @@ struct BMIData : Codable, Stamped {
   var bmi : Double {
     get {
       let kilos : Double = Double(weight)*0.453592
-      let meters : Double = Double((feet*12)+inches)*0.0254
+      let totalInches : Double = Double((feet*12)+inches)
+      let meters : Double = (totalInches == 0 ? 0.1 : totalInches)*0.0254
       return round((kilos/(meters*meters))*10)/10
     }
   }

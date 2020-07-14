@@ -32,7 +32,7 @@ class SubmitView: BaseDataView {
   private lazy var activitiesLabel : UILabel = {
     [unowned self] in
     let activities = UILabel()
-    activities.text = "\(self.missedQuestion!.question)?"
+    activities.text = "\(self.missedQuestion!.text)?"
     activities.numberOfLines = 0
     activities.textColor = UIColor.black
     activities.textAlignment = .center

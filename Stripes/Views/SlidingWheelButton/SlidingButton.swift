@@ -56,21 +56,31 @@ class SlidingButton: UIView {
   private var centerXConstraint : NSLayoutConstraint?
   
   init(_ frame: CGRect, _ options: [String], _ startIndex : Int?) {
-    for i in 0..<options.count {
-      self.options[options[i]] = {}
-    }
     self.switchFunction = {text in}
     super.init(frame: frame)
     self.addGestures()
-    self.circleStructure(options, startIndex ?? 0)
+    self.set(options, startIndex)
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func set(_ options : [String], _ startIndex : Int?) {
+    for i in 0..<options.count {
+      self.options[options[i]] = {}
+    }
+    self.circleStructure(options, startIndex ?? 0)
+  }
+  
   func getCurrentText()->String {
     return self.current!.name
+  }
+  
+  func reloadGraphics() {
+    self.setNeedsLayout()
+    self.currentOption.fitTextToBounds()
+    self.setNeedsDisplay()
   }
   
   override func willMove(toSuperview newSuperview: UIView?) {
@@ -181,9 +191,9 @@ class SlidingButton: UIView {
     guard !isAnimating else { return }
     switch sender.direction {
       case .left:
-        self.swipeAnimation(isRight: false)
+        current!.name == current!.left!.name ? () : self.swipeAnimation(isRight: false)
       case .right:
-        self.swipeAnimation(isRight: true)
+        current!.name == current!.right!.name ? () : self.swipeAnimation(isRight: true)
       default:
         return
     }
